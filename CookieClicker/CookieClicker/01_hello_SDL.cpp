@@ -6,10 +6,22 @@ and may not be redistributed without written permission.*/
 #include <stdio.h>
 #include "Window.h"
 #include "Image.h"
+#include <map>
+#include <memory>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
+
+
+
+const std::map<SDL_KeyCode, const char*> surfaceMap = {
+	{SDL_KeyCode::SDLK_UP, "img/up.bmp"},
+	{SDL_KeyCode::SDLK_DOWN, "img/down.bmp"},
+	{SDL_KeyCode::SDLK_LEFT, "img/left.bmp"},
+	{SDL_KeyCode::SDLK_RIGHT, "img/right.bmp"}
+};
+const char* fallbackSurface{ "img/press.bmp" };
 
 int main(int argc, char* args[])
 {
@@ -23,8 +35,8 @@ int main(int argc, char* args[])
 
 
 	//Load media
-	Image image{"img/hello_world.bmp"};
-	if (!image.wasSuccessful())
+	auto image = std::make_unique<Image>(fallbackSurface);
+	if (!image->wasSuccessful())
 	{
 		printf("Failed to load media!\n");
 		return -1;
@@ -40,13 +52,35 @@ int main(int argc, char* args[])
 	{
 		while (SDL_PollEvent(&e))
 		{
-			if (e.type == SDL_QUIT)
+			switch (e.type)
 			{
+			case SDL_QUIT: {
 				quit = true;
+			} 	 break;
+			case SDL_KEYDOWN: {
+				if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end()) {
+					auto value = *result;
+					auto imageName = value.second;
+					image = std::make_unique<Image>( imageName );
+					if (!image->wasSuccessful())
+					{
+						printf("Failed to load media!\n");
+						return -1;
+					}
+				}
+				else
+				{
+					image = std::make_unique<Image>(fallbackSurface);
+					if (!image->wasSuccessful())
+					{
+						printf("Failed to load media!\n");
+						return -1;
+					}
+				}
+			} break;
 			}
+			window.render(image.get());
 		}
-
-		window.render(image);
 	}
 
 	return 0;

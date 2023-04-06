@@ -13,6 +13,7 @@ Image::Image(const char* path) : success{} {
 	}
 	
 	success = true;
+
 }
 
 Image::~Image() {

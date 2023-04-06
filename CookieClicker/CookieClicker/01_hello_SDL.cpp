@@ -8,12 +8,11 @@ and may not be redistributed without written permission.*/
 #include "Image.h"
 #include <map>
 #include <memory>
+#include <string>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
-
-
+const int SCREEN_WIDTH = 1900;
+const int SCREEN_HEIGHT = 1000;
 
 const std::map<SDL_KeyCode, const char*> surfaceMap = {
 	{SDL_KeyCode::SDLK_UP, "img/up.bmp"},
@@ -22,6 +21,9 @@ const std::map<SDL_KeyCode, const char*> surfaceMap = {
 	{SDL_KeyCode::SDLK_RIGHT, "img/right.bmp"}
 };
 const char* fallbackSurface{ "img/press.bmp" };
+
+
+
 
 int main(int argc, char* args[])
 {
@@ -41,7 +43,6 @@ int main(int argc, char* args[])
 		printf("Failed to load media!\n");
 		return -1;
 	}
-
 
 	// while(!window.quit())
 	//     window.update();
@@ -82,7 +83,6 @@ int main(int argc, char* args[])
 			window.render(image.get());
 		}
 	}
-
 	return 0;
 }
 

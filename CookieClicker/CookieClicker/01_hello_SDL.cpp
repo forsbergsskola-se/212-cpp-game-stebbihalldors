@@ -55,30 +55,30 @@ int main(int argc, char* args[])
 		{
 			switch (e.type)
 			{
-			case SDL_QUIT: {
-				quit = true;
-			} 	 break;
-			case SDL_KEYDOWN: {
-				if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end()) {
-					auto value = *result;
-					auto imageName = value.second;
-					image = std::make_unique<Image>( imageName );
-					if (!image->wasSuccessful())
-					{
-						printf("Failed to load media!\n");
-						return -1;
+				case SDL_QUIT: {
+					quit = true;
+				} 	 break;
+				case SDL_KEYDOWN: {
+					if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end()) {
+						auto value = *result;
+						auto imageName = value.second;
+						image = std::make_unique<Image>( imageName );
+						if (!image->wasSuccessful())
+						{
+							printf("Failed to load media!\n");
+							return -1;
+						}
 					}
-				}
-				else
-				{
-					image = std::make_unique<Image>(fallbackSurface);
-					if (!image->wasSuccessful())
+					else
 					{
-						printf("Failed to load media!\n");
-						return -1;
+						image = std::make_unique<Image>(fallbackSurface);
+						if (!image->wasSuccessful())
+						{
+							printf("Failed to load media!\n");
+							return -1;
+						}
 					}
-				}
-			} break;
+				} break;
 			}
 			window.render(image.get());
 		}

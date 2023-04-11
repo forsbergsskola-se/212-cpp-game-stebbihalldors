@@ -165,18 +165,22 @@
   <ItemGroup>
     <ClCompile Include="01_hello_SDL.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Render.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Image.h" />
+    <ClInclude Include="Render.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="img\down.bmp" />
     <Image Include="img\hello_world.bmp" />
     <Image Include="img\left.bmp" />
+    <Image Include="img\loaded.png" />
     <Image Include="img\press.bmp" />
     <Image Include="img\right.bmp" />
+    <Image Include="img\texture.png" />
     <Image Include="img\up.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

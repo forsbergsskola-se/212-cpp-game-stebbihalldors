@@ -5,7 +5,9 @@ class Window
 	//The window we'll be rendering to
 	SDL_Window* window{};
 	//The surface contained by the window
-	SDL_Surface* screenSurface{};
+	//SDL_Surface* screenSurface{};
+	//Working on: The Window Renderer
+	SDL_Renderer* renderer{};
 	//Whether Window Startup was successful
 	bool success;
 

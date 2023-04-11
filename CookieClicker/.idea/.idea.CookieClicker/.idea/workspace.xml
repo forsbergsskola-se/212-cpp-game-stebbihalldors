@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6a9a3c-49b6-48c1-b12a-34fe60a7e276" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CookieClicker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CookieClicker/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CookieClicker/01_hello_SDL.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CookieClicker/01_hello_SDL.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CookieClicker/CookieClicker.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/CookieClicker/CookieClicker.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CookieClicker/CookieClicker.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/CookieClicker/CookieClicker.vcxproj.filters" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CookieClicker/Window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CookieClicker/Window.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CookieClicker/Window.h" beforeDir="false" afterPath="$PROJECT_DIR$/CookieClicker/Window.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2O0dd7S3znFcMS1FNHqCXEQg9Gv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -18,14 +26,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="CookieClicker" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -83,6 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680701520675</updated>
       <workItem from="1680701530557" duration="5000" />
+      <workItem from="1681208058382" duration="84000" />
     </task>
     <servers />
   </component>

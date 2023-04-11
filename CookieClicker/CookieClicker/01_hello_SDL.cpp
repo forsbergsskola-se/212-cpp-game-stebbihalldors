@@ -37,49 +37,41 @@ int main(int argc, char* args[])
 
 
 	//Load media
-	auto image = std::make_unique<Image>(fallbackSurface);
+	std::unique_ptr<Image> image = std::make_unique<Image>(fallbackSurface); //can use initializing bracers also
 	if (!image->wasSuccessful())
 	{
 		printf("Failed to load media!\n");
 		return -1;
 	}
 
-	// while(!window.quit())
-	//     window.update();
-
-	//Hack to get window to stay up
+	// while the user doesnt wnat to quit
 	SDL_Event e; bool quit = false;
 	while (quit == false)
 	{
+		// loop through all pending events from Windows(OS)
 		while (SDL_PollEvent(&e))
 		{
+			// check, if its an event we want to react to
 			switch (e.type)
 			{
 				case SDL_QUIT: {
 					quit = true;
 				} 	 break;
 				case SDL_KEYDOWN: {
+					const char* imgPath = fallbackSurface;
 					if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end()) {
-						auto value = *result;
-						auto imageName = value.second;
-						image = std::make_unique<Image>( imageName );
-						if (!image->wasSuccessful())
-						{
-							printf("Failed to load media!\n");
-							return -1;
-						}
+						imgPath = result->second;
 					}
-					else
+
+					image = std::make_unique<Image>(imgPath);
+					if (!image->wasSuccessful())
 					{
-						image = std::make_unique<Image>(fallbackSurface);
-						if (!image->wasSuccessful())
-						{
-							printf("Failed to load media!\n");
-							return -1;
-						}
+						printf("Failed to load media!\n");
+						return -1;
 					}
 				} break;
 			}
+			// when done with all pending events, update the rendered screen
 			window.render(image.get());
 		}
 	}

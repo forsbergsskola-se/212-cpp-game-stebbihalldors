@@ -1,5 +1,5 @@
 #include "Image.h"
-#include "SDL.h"
+#include <SDL.h>
 #include <cstdio>
 
 Image::Image(const char* path) : success{} {
@@ -11,6 +11,8 @@ Image::Image(const char* path) : success{} {
 		printf("Unable to load image %s! SDL Error: %s\n", path, SDL_GetError());
 		return;
 	}
+
+	//imageSurface = SDL_ConvertSurface(
 	
 	success = true;
 

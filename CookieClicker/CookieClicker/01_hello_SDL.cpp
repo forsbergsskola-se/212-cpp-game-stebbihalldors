@@ -4,11 +4,11 @@ and may not be redistributed without written permission.*/
 //Using SDL and standard IO
 #include <SDL.h>
 #include <stdio.h>
-#include "Window.h"
-#include "Image.h"
 #include <map>
 #include <memory>
 #include <string>
+#include "Window.h"
+#include "Image.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1900;
@@ -44,7 +44,7 @@ int main(int argc, char* args[])
 		return -1;
 	}
 
-	// while the user doesnt wnat to quit
+	// while the user doesnt want to quit
 	SDL_Event e; bool quit = false;
 	while (quit == false)
 	{

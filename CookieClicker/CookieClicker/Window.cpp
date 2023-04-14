@@ -13,16 +13,15 @@ Window::Window(int width, int height, IImageLoader* imageLoader)
 		return;
 	}
 
+	// Create Window and Renderer
+	SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_SHOWN, &window, &renderer);
 	//Create window
-	window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 	if (!window)
 	{
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		return;
 	}
 
-	//Get window surface
-	screenSurface = SDL_GetWindowSurface(window);
 	success = true;
 }
 
@@ -44,12 +43,22 @@ void Window::render(Image* image) {
 		image->height
 	};
 	//Apply image
-	SDL_BlitScaled(image->getResource(), nullptr, screenSurface, &stretchRect);
-	//Update the surface
-	SDL_UpdateWindowSurface(window);
+	SDL_RenderCopy(renderer, image->getResource(), nullptr, &stretchRect);
 }
 
 std::unique_ptr<Image> Window::loadImage(const char* path)
 {
-	return imageLoader->loadImage(path, screenSurface->format);
+	return imageLoader->loadImage(path, renderer);
+}
+
+void Window::clear() {
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_RenderClear(renderer);
+	//static Uint32 clearColor = SDL_MapRGB(screenSurface->format, 0, 0, 0);
+	//SDL_FillRect(screenSurface, nullptr, clearColor);
+}
+
+void Window::present() {
+	//Update the surface
+	SDL_RenderPresent(renderer);
 }

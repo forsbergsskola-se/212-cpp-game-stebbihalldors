@@ -67,3 +67,8 @@ void Window::render(Image* image) {
 	//Update the surface
 	SDL_UpdateWindowSurface(window);
 }
+
+std::unique_ptr<Image> Window::loadImage(const char* path)
+{
+	return std::make_unique<Image>(path, screenSurface->format);
+}

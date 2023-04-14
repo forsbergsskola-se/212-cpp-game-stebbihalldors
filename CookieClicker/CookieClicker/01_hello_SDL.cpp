@@ -37,7 +37,7 @@ int main(int argc, char* args[])
 
 
 	//Load media
-	std::unique_ptr<Image> image = std::make_unique<Image>(fallbackSurface); //can use initializing bracers also
+	std::unique_ptr<Image> image{ window.loadImage(fallbackSurface) };
 	if (!image->wasSuccessful())
 	{
 		printf("Failed to load media!\n");
@@ -63,7 +63,7 @@ int main(int argc, char* args[])
 						imgPath = result->second;
 					}
 
-					image = std::make_unique<Image>(imgPath);
+					image = window.loadImage(imgPath);
 					if (!image->wasSuccessful())
 					{
 						printf("Failed to load media!\n");

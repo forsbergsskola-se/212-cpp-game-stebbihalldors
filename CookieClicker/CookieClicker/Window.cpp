@@ -1,9 +1,10 @@
 #include "Window.h"
 #include <cstdio>
 #include <SDL.h>
-#include <SDL_image.h>
+#include "IImageLoader.h"
 
-Window::Window(int width, int height) : success{} {
+Window::Window(int width, int height, IImageLoader* imageLoader) 
+	: success{}, imageLoader{ imageLoader } {
 
 	//Initialize SDL
 	if (SDL_Init(SDL_INIT_VIDEO))
@@ -21,29 +22,8 @@ Window::Window(int width, int height) : success{} {
 	}
 
 	//Get window surface
-	//screenSurface = SDL_GetWindowSurface(window);
-	//Create renderer for window
-
-	//Initialize PNG loading
-	int imgFlags = IMG_INIT_PNG;
-	if (!(IMG_Init(imgFlags) & imgFlags))
-	{
-		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
-		return;
-	}
-
-
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	if (renderer == nullptr)
-	{
-		printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
-		return;
-	}
-	//Initialize renderer color
-	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-
+	screenSurface = SDL_GetWindowSurface(window);
 	success = true;
-
 }
 
 Window::~Window() {
@@ -57,7 +37,8 @@ Window::~Window() {
 
 void Window::render(Image* image) {
 
-	SDL_Rect stretchRect{ image->x,
+	SDL_Rect stretchRect{ 
+		image->x,
 		image->y,
 		image->width,
 		image->height
@@ -71,5 +52,5 @@ void Window::render(Image* image) {
 
 std::unique_ptr<Image> Window::loadImage(const char* path)
 {
-	return std::make_unique<Image>(path, screenSurface->format);
+	return imageLoader->loadImage(path, screenSurface->format);
 }

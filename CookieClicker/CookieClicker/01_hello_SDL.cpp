@@ -9,6 +9,7 @@ and may not be redistributed without written permission.*/
 #include <string>
 #include "Window.h"
 #include "Image.h"
+#include "SDLImageLoader.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1900;
@@ -27,7 +28,11 @@ const char* fallbackSurface{ "img/press.bmp" };
 
 int main(int argc, char* args[])
 {
-	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT };
+	// We decide for now to use the SDL Image Loader ( which only supports BMP)
+	IImageLoader* imageLoader = new SDLImageLoader{};
+	// We pass that ImageLoader on to the Window, so the Window can use it
+	// to load images
+	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT,imageLoader };
 	//Start up SDL and create window
 	if (!window.wasSuccessful())
 	{

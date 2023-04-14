@@ -13,6 +13,7 @@ and may not be redistributed without written permission.*/
 #include <vector>
 #include "GameObject.h"
 #include "Pikachu.h"
+#include "Charmander.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 800;
@@ -47,6 +48,8 @@ int main(int argc, char* args[])
 	std::vector<GameObject*> gameObjects{};
 
 	gameObjects.push_back(new Pikachu{&window});
+	gameObjects.push_back(new Charmander{ &window, 200 });
+	gameObjects.push_back(new Charmander{ &window, 400 });
 
 	// while the user doesnt want to quit
 	SDL_Event e; bool quit = false;

@@ -57,12 +57,13 @@ Window::~Window() {
 
 void Window::render(Image* image) {
 
-	SDL_Rect stretchRect;
-	stretchRect.x = 0;
-	stretchRect.y = 0;
-	stretchRect.w = 1900;
-	stretchRect.h = 1000;
+	SDL_Rect stretchRect{ image->x,
+		image->y,
+		image->width,
+		image->height
+	};
 	//Apply image
+	SDL_BlitScaled(image->getResource(), nullptr, screenSurface, &stretchRect);
 		//SDL_BlitScaled(image->getResource(), nullptr, screenSurface, &stretchRect);
 	//Update the surface
 	SDL_UpdateWindowSurface(window);

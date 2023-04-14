@@ -46,8 +46,20 @@ int main(int argc, char* args[])
 
 	// while the user doesnt want to quit
 	SDL_Event e; bool quit = false;
+
+	bool goingRight = true;
+
 	while (quit == false)
 	{
+		if (goingRight)
+			image->x++;
+		else
+			image->x--;
+
+		if (image->x > 500 || image->x < 1)
+		{
+			goingRight = !goingRight;
+		}
 		// loop through all pending events from Windows(OS)
 		while (SDL_PollEvent(&e))
 		{

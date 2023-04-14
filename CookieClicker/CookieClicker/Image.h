@@ -7,6 +7,7 @@ class Image
 	SDL_Surface* imageSurface{};
 	bool success;
 public:
+	int x, y, width, height;
 	Image(const char* path, const SDL_PixelFormat* pixelFormat);
 	~Image();
 	bool wasSuccessful() { return success; }

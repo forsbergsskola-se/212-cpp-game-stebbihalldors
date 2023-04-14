@@ -14,13 +14,16 @@ Window::Window(int width, int height, IImageLoader* imageLoader)
 	}
 
 	// Create Window and Renderer
-	SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_SHOWN, &window, &renderer);
+	SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE, &window, &renderer);
 	//Create window
 	if (!window)
 	{
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		return;
 	}
+
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear"); //make the scaled rendering look smoother
+	SDL_RenderSetLogicalSize(renderer, width, height);
 
 	success = true;
 }
@@ -52,10 +55,8 @@ std::unique_ptr<Image> Window::loadImage(const char* path)
 }
 
 void Window::clear() {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(renderer, 120, 60, 255, 255);
 	SDL_RenderClear(renderer);
-	//static Uint32 clearColor = SDL_MapRGB(screenSurface->format, 0, 0, 0);
-	//SDL_FillRect(screenSurface, nullptr, clearColor);
 }
 
 void Window::present() {

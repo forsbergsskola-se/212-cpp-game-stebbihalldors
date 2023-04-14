@@ -10,8 +10,6 @@ class Window
 	SDL_Window* window{};
 	//The surface contained by the window
 	SDL_Surface* screenSurface{};
-	//Working on: The Window Renderer
-	SDL_Renderer* renderer{};
 	//Whether Window Startup was successful
 	bool success;
 	// dependency to the ImageLoader
@@ -22,6 +20,8 @@ public:
 	~Window();
 	bool wasSuccessful() { return success; }
 	void render(Image* image);
+	void clear();
+	void present();
 	std::unique_ptr<Image> loadImage(const char* path);
 };
 

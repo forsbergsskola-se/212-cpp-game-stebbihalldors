@@ -10,6 +10,9 @@ and may not be redistributed without written permission.*/
 #include "Window.h"
 #include "Image.h"
 #include "SDL_ImageImageLoader.h"
+#include <vector>
+#include "GameObject.h"
+#include "Pikachu.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 800;
@@ -23,7 +26,8 @@ const std::map<SDL_KeyCode, const char*> surfaceMap = {
 };
 const char* fallbackSurface{ "img/Pikachu.png" };
 
-
+const unsigned int FPS = 30;
+const unsigned int MS_PER_FRAME = 1000 / FPS;
 
 
 int main(int argc, char* args[])
@@ -40,30 +44,22 @@ int main(int argc, char* args[])
 		return -1;
 	}
 
+	std::vector<GameObject*> gameObjects{};
 
-	//Load media
-	std::unique_ptr<Image> image{ window.loadImage(fallbackSurface) };
-	if (!image->wasSuccessful())
-	{
-		printf("Failed to load media!\n");
-		return -1;
-	}
+	gameObjects.push_back(new Pikachu{&window});
 
 	// while the user doesnt want to quit
 	SDL_Event e; bool quit = false;
-
+	unsigned int frameStartMs;
 	bool goingRight = true;
 
 	while (quit == false)
 	{
-		if (goingRight)
-			image->x++;
-		else
-			image->x--;
+		frameStartMs = SDL_GetTicks();
 
-		if (image->x > 500 || image->x < 1)
-			goingRight = !goingRight;
-	
+		for (auto gameObject : gameObjects) {
+			gameObject->update();
+		}
 		// loop through all pending events from Windows(OS)
 		while (SDL_PollEvent(&e))
 		{
@@ -78,19 +74,26 @@ int main(int argc, char* args[])
 					if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end()) {
 						imgPath = result->second;
 					}
-
-					image = window.loadImage(imgPath);
-					if (!image->wasSuccessful())
-					{
-						printf("Failed to load media!\n");
-						return -1;
-					}
 				} break;
 			}
-			// when done with all pending events, update the rendered screen
-			window.render(image.get());
 		}
 	}
+
+	// when done with all pending events, update the rendered screen
+	window.clear(); //first clear
+	for (auto gameObject : gameObjects) {
+		gameObject->render(&window);
+	}
+	window.present(); // then present it
+
+	// see, how long we should wait so we get 30fps
+	//fixed update
+	unsigned int frameTimeMs = SDL_GetTicks() - frameStartMs;
+	if (frameTimeMs < MS_PER_FRAME)
+	{
+		SDL_Delay(MS_PER_FRAME - frameTimeMs);
+	}
+
 	return 0;
 }
 

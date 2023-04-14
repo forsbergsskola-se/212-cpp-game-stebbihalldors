@@ -9,7 +9,7 @@ and may not be redistributed without written permission.*/
 #include <string>
 #include "Window.h"
 #include "Image.h"
-#include "SDLImageLoader.h"
+#include "SDL_ImageImageLoader.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 800;
@@ -21,7 +21,7 @@ const std::map<SDL_KeyCode, const char*> surfaceMap = {
 	{SDL_KeyCode::SDLK_LEFT, "img/left.bmp"},
 	{SDL_KeyCode::SDLK_RIGHT, "img/right.bmp"}
 };
-const char* fallbackSurface{ "img/press.bmp" };
+const char* fallbackSurface{ "img/Pikachu.png" };
 
 
 
@@ -29,7 +29,7 @@ const char* fallbackSurface{ "img/press.bmp" };
 int main(int argc, char* args[])
 {
 	// We decide for now to use the SDL Image Loader ( which only supports BMP)
-	IImageLoader* imageLoader = new SDLImageLoader{};
+	IImageLoader* imageLoader = new SDL_ImageImageLoader{};
 	// We pass that ImageLoader on to the Window, so the Window can use it
 	// to load images
 	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT,imageLoader };

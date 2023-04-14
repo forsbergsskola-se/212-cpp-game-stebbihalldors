@@ -45,7 +45,6 @@ void Window::render(Image* image) {
 	};
 	//Apply image
 	SDL_BlitScaled(image->getResource(), nullptr, screenSurface, &stretchRect);
-		//SDL_BlitScaled(image->getResource(), nullptr, screenSurface, &stretchRect);
 	//Update the surface
 	SDL_UpdateWindowSurface(window);
 }

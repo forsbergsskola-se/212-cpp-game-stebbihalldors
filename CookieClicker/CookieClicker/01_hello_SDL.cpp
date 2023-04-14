@@ -12,8 +12,8 @@ and may not be redistributed without written permission.*/
 #include "SDLImageLoader.h"
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 1900;
-const int SCREEN_HEIGHT = 1000;
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 640;
 
 const std::map<SDL_KeyCode, const char*> surfaceMap = {
 	{SDL_KeyCode::SDLK_UP, "img/up.bmp"},
@@ -62,9 +62,8 @@ int main(int argc, char* args[])
 			image->x--;
 
 		if (image->x > 500 || image->x < 1)
-		{
 			goingRight = !goingRight;
-		}
+	
 		// loop through all pending events from Windows(OS)
 		while (SDL_PollEvent(&e))
 		{

@@ -4,6 +4,7 @@ and may not be redistributed without written permission.*/
 //Using SDL and standard IO
 #include <SDL.h>
 #include <stdio.h>
+#include <iostream>
 #include <map>
 #include <memory>
 #include <string>
@@ -72,6 +73,23 @@ int main(int argc, char* args[])
 				case SDL_QUIT: {
 					quit = true;
 				} 	 break;
+				case SDL_MOUSEMOTION: {
+					int x, y;
+					SDL_GetMouseState(&x, &y);
+					std::cout << x << " : " << y << std::endl;
+				} break;
+				case SDL_MOUSEBUTTONDOWN: {
+					if (SDL_BUTTON_LEFT == e.button.button)
+						std::cout << "Left mouse button is down" << std::endl;
+					if (SDL_BUTTON_RIGHT == e.button.button)
+						std::cout << "Right mouse button is down" << std::endl;
+					if (SDL_BUTTON_MIDDLE == e.button.button)
+						std::cout << "Middle mouse button is down" << std::endl;
+				} break;
+				case SDL_MOUSEBUTTONUP: {
+					if (SDL_BUTTON_LEFT == e.button.button)
+						std::cout << "Left mouse button is up" << std::endl;
+				} break;
 				case SDL_KEYDOWN: {
 					const char* imgPath = fallbackSurface;
 					if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end()) {

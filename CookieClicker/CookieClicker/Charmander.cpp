@@ -17,5 +17,5 @@ void Charmander::update()
 			patrollingDown = true;
 		}
 	}
-	image->x = i;
+	image->y = i;
 }

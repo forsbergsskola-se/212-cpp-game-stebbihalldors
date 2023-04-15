@@ -13,12 +13,11 @@ and may not be redistributed without written permission.*/
 #include "SDL_ImageImageLoader.h"
 #include <vector>
 #include "GameObject.h"
-#include "Pikachu.h"
 #include "Charmander.h"
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 640;
+const int SCREEN_WIDTH = 1024;
+const int SCREEN_HEIGHT = 768;
 
 const std::map<SDL_KeyCode, const char*> surfaceMap = {
 	{SDL_KeyCode::SDLK_UP, "img/up.bmp"},
@@ -48,9 +47,10 @@ int main(int argc, char* args[])
 
 	std::vector<GameObject*> gameObjects{};
 
-	gameObjects.push_back(new Pikachu{&window});
-	gameObjects.push_back(new Charmander{ &window, 200 , 100, 100});
-	gameObjects.push_back(new Charmander{ &window, 400 , 200, 200});
+	int gHeight = 200;
+	int gWidth = 200;
+	gameObjects.push_back(new Charmander{ &window, 0, (SCREEN_HEIGHT/2)-gHeight/2 , gHeight, gWidth});
+	//gameObjects.push_back(new Charmander{ &window,400, 400 , 200, 200});
 
 	// while the user doesnt want to quit
 	SDL_Event e; bool quit = false;
@@ -62,7 +62,7 @@ int main(int argc, char* args[])
 		frameStartMs = SDL_GetTicks();
 
 		for (auto gameObject : gameObjects) {
-			gameObject->update();
+			gameObject->update(e);
 		}
 		// loop through all pending events from Windows(OS)
 		while (SDL_PollEvent(&e))
@@ -73,23 +73,6 @@ int main(int argc, char* args[])
 				case SDL_QUIT: {
 					quit = true;
 				} 	 break;
-				case SDL_MOUSEMOTION: {
-					int x, y;
-					SDL_GetMouseState(&x, &y);
-					std::cout << x << " : " << y << std::endl;
-				} break;
-				case SDL_MOUSEBUTTONDOWN: {
-					if (SDL_BUTTON_LEFT == e.button.button)
-						std::cout << "Left mouse button is down" << std::endl;
-					if (SDL_BUTTON_RIGHT == e.button.button)
-						std::cout << "Right mouse button is down" << std::endl;
-					if (SDL_BUTTON_MIDDLE == e.button.button)
-						std::cout << "Middle mouse button is down" << std::endl;
-				} break;
-				case SDL_MOUSEBUTTONUP: {
-					if (SDL_BUTTON_LEFT == e.button.button)
-						std::cout << "Left mouse button is up" << std::endl;
-				} break;
 				case SDL_KEYDOWN: {
 					const char* imgPath = fallbackSurface;
 					if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end()) {

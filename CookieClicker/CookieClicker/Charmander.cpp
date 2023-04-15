@@ -1,6 +1,6 @@
 #include "Charmander.h"
 
-void Charmander::update()
+void Charmander::update(SDL_Event& event)
 {
 	/*
 	if (patrollingDown)
@@ -20,4 +20,8 @@ void Charmander::update()
 	}
 	image->y = i;
 	*/
+}
+
+void Charmander::onClick() {
+	printf("Charmander was clicked.");
 }

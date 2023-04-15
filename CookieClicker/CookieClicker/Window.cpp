@@ -23,7 +23,7 @@ Window::Window(int width, int height, IImageLoader* imageLoader)
 	}
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear"); //make the scaled rendering look smoother
-	SDL_RenderSetLogicalSize(renderer, width, height);
+	SDL_RenderSetLogicalSize(renderer, width, height);  // moves the images away from original destination mayb messes up the mouseover
 
 	success = true;
 }

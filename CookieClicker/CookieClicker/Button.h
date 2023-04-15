@@ -8,6 +8,7 @@ class Button :
 protected:
     virtual void onClick() = 0;
 public:
+    Button(const char* imagePath, Window* window) : GameObject(imagePath, window) {};
     //Sets top left position
     void setPosition(int x, int y);
 

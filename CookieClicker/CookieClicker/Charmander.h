@@ -13,12 +13,12 @@ public:
     Charmander(Window* window, int x) : Button("img/Charmander.png", window) {
         image->x = x;
     };
-    Charmander(Window* window, int x, int y, int width, int height) : GameObject("img/Charmander.png", window) {
+    Charmander(Window* window, int x, int y, int width, int height) : Button("img/Charmander.png", window) {
         image->x = x;
         image->y = y;
         image->width = width;
         image->height = height;
-    }
+    };
     void update(SDL_Event& event) override;
 };
 

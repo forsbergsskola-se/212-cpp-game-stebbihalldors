@@ -80,23 +80,22 @@ int main(int argc, char* args[])
 				} break;
 			}
 		}
-	}
 
-	// when done with all pending events, update the rendered screen
-	window.clear(); //first clear
-	for (auto gameObject : gameObjects) {
-		gameObject->render(&window);
-	}
-	window.present(); // then present it
+		// when done with all pending events, update the rendered screen
+		window.clear(); //first clear
+		for (auto gameObject : gameObjects) {
+			gameObject->render(&window);
+		}
+		window.present(); // then present it
 
-	// see, how long we should wait so we get 30fps
-	//fixed update
-	unsigned int frameTimeMs = SDL_GetTicks() - frameStartMs;
-	if (frameTimeMs < MS_PER_FRAME)
-	{
-		SDL_Delay(MS_PER_FRAME - frameTimeMs);
+		// see, how long we should wait so we get 30fps
+		//fixed update
+		unsigned int frameTimeMs = SDL_GetTicks() - frameStartMs;
+		if (frameTimeMs < MS_PER_FRAME)
+		{
+			SDL_Delay(MS_PER_FRAME - frameTimeMs);
+		}
 	}
-
 	return 0;
 }
 

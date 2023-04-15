@@ -2,6 +2,7 @@
 
 void Charmander::update(SDL_Event& event)
 {
+	Button::update(event);
 	/*
 	if (patrollingDown)
 	{

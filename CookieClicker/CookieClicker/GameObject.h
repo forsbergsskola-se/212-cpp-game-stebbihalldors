@@ -11,7 +11,7 @@ protected:
 	std::unique_ptr<Image> image;
 public:
 	GameObject(const char* imagePath, Window* window);
-	virtual void update(SDL_Event& event) = 0;
+	virtual void update(SDL_Event& event){}
 	void render(Window* window);
 };
 

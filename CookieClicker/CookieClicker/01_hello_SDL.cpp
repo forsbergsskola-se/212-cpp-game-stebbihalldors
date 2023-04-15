@@ -49,7 +49,11 @@ int main(int argc, char* args[])
 
 	int gHeight = 200;
 	int gWidth = 200;
+	gameObjects.push_back(new GameObject{ "img/charmander.png", &window }); // Image without a button (not clickable)
 	gameObjects.push_back(new Charmander{ &window, 0, (SCREEN_HEIGHT/2)-gHeight/2 , gHeight, gWidth});
+	
+	//todo: Make a background image first, 
+	//Second: Make a buyMenu image on the right quarter of the screen where buttons will come ontop
 	//gameObjects.push_back(new Charmander{ &window,400, 400 , 200, 200});
 
 	// while the user doesnt want to quit
@@ -61,9 +65,6 @@ int main(int argc, char* args[])
 	{
 		frameStartMs = SDL_GetTicks();
 
-		for (auto gameObject : gameObjects) {
-			gameObject->update(e);
-		}
 		// loop through all pending events from Windows(OS)
 		while (SDL_PollEvent(&e))
 		{
@@ -79,6 +80,9 @@ int main(int argc, char* args[])
 						imgPath = result->second;
 					}
 				} break;
+			}
+			for (auto gameObject : gameObjects) {
+				gameObject->update(e);
 			}
 		}
 

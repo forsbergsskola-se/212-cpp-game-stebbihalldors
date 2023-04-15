@@ -3,6 +3,7 @@
 
 void Pikachu::update()
 {
+	/*
 	if (patrollingRight)
 	{
 		i++;
@@ -19,4 +20,5 @@ void Pikachu::update()
 		}
 	}
 	image->x = i;
+	*/
 }

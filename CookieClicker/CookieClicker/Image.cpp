@@ -7,8 +7,8 @@ Image::Image(SDL_Texture* texture) :
 	success{texture != nullptr},
 	x{},
 	y{},
-	width{ 100 },
-	height{ 100 }
+	width{}, //add here if we want pikachu to spawn somewhere (curr dont want him)
+	height{}
 {
 	success = true;
 }

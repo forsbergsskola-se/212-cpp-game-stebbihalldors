@@ -2,6 +2,7 @@
 
 void Charmander::update()
 {
+	/*
 	if (patrollingDown)
 	{
 		i++;
@@ -18,4 +19,5 @@ void Charmander::update()
 		}
 	}
 	image->y = i;
+	*/
 }

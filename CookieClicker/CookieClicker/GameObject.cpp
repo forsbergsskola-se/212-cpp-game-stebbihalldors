@@ -7,9 +7,11 @@ GameObject::GameObject(const char* imagePath, Window* window)
 	
 }
 
-GameObject::GameObject(const char* imagePath, Window* window, int width, int height) 
+GameObject::GameObject(const char* imagePath, Window* window, int x, int y, int width, int height) 
 	: image{ window->loadImage(imagePath) }
 {
+	image->x = x;
+	image->y = y;
 	image->width = width;
 	image->height = height;
 }

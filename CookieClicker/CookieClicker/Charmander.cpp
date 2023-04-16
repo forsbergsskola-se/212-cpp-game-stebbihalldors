@@ -1,4 +1,5 @@
 #include "Charmander.h"
+#include <iostream>
 
 void Charmander::update(SDL_Event& event)
 {
@@ -24,5 +25,7 @@ void Charmander::update(SDL_Event& event)
 }
 
 void Charmander::onClick() {
-	printf("Charmander was clicked.");
+	printf("Charmander was clicked. ");
+	totalCookies += 1;
+	std::cout << totalCookies << std::endl;
 }

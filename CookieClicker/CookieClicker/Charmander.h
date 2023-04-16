@@ -4,7 +4,7 @@
 class Charmander :
     public Button
 {
-    int i{};
+    int totalCookies{};
     bool patrollingDown{ true };
 protected:
     void onClick() override;

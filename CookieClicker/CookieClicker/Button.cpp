@@ -19,7 +19,7 @@ void Button::update(SDL_Event& event)
 				int x, y;
 				SDL_GetMouseState(&x, &y);
 				
-				if (x > this->image->x && x < this->image->width + this->image->x && y > this->image->y && y < this->image->height + this->image->y) {
+				if (x > this->image->x && x < this->image->width + this->image->x && y > this->image->y && y < this->image->height + this->image->y && SDL_BUTTON_LEFT == event.button.button) {
 					onClick();
 
 				}

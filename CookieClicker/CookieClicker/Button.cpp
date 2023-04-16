@@ -17,11 +17,18 @@ void Button::update(SDL_Event& event)
 
 				}
 				if (SDL_BUTTON_LEFT == event.button.button)
+				{
+					this->image->width -= 20;
+					this->image->height -= 20;
 					//change to pressed down image
+				}
 			} break;
 			case SDL_MOUSEBUTTONUP: {
 				if (SDL_BUTTON_LEFT == event.button.button)
-					//default image
+				{
+					this->image->width += 20;
+					this->image->height += 20;
+				}
 			} break;
 		}
 	

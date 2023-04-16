@@ -53,7 +53,7 @@ int main(int argc, char* args[])
 	// CookieUI override onCookieChanged(int newCookies){text.setText(newCookies)};
 	Cookie cookie{ &window, 0, (SCREEN_HEIGHT / 2) - gHeight / 2 , gWidth, gHeight };
 	gameObjects.push_back(&cookie);
-	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , cookie});
+	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , &cookie});
 	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 110, 150, 50, 50});
 
 	// while the user doesnt want to quit

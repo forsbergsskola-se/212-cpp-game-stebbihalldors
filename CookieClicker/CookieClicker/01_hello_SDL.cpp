@@ -14,6 +14,7 @@ and may not be redistributed without written permission.*/
 #include <vector>
 #include "GameObject.h"
 #include "Charmander.h"
+#include "CookieProducer.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1024;
@@ -53,12 +54,8 @@ int main(int argc, char* args[])
 	gameObjects.push_back(new GameObject{ "img/Background.jpg", &window , 0,0,1024, 768 }); // Image without a button (not clickable)
 	gameObjects.push_back(new GameObject{ "img/VLine.png", &window, (SCREEN_WIDTH/2)+(SCREEN_WIDTH/6), -200, 200, 1500 }); // Image without a button (not clickable)
 	//Button images
-	gameObjects.push_back(new Charmander{ &window, 0, (SCREEN_HEIGHT/2)-gHeight/2 , gHeight, gWidth});
-	
-	//todo: Make a background image first, 
-	
-	//Second: Make a buyMenu image on the right quarter of the screen where buttons will come ontop
-	//gameObjects.push_back(new Charmander{ &window,400, 400 , 200, 200});
+	gameObjects.push_back(new Charmander{ &window, 0, (SCREEN_HEIGHT/2)-gHeight/2 , gWidth, gHeight});
+	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 50 });
 
 	// while the user doesnt want to quit
 	SDL_Event e; bool quit = false;

@@ -170,6 +170,7 @@ copy /Y "$(SolutionDir)ext\SDL2_image-2.6.3\lib\x64\SDL2_image.dll" "$(TargetDir
     <ClCompile Include="01_hello_SDL.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Charmander.cpp" />
+    <ClCompile Include="CookieProducer.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="IImageLoader.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -180,6 +181,7 @@ copy /Y "$(SolutionDir)ext\SDL2_image-2.6.3\lib\x64\SDL2_image.dll" "$(TargetDir
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Charmander.h" />
+    <ClInclude Include="CookieProducer.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="IImageLoader.h" />
     <ClInclude Include="Image.h" />

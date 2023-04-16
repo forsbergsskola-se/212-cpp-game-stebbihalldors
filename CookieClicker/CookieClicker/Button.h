@@ -3,6 +3,7 @@
 class Button :
     public GameObject
 {
+    bool hasPressed{};
 protected:
     virtual void onClick() = 0;
 public:

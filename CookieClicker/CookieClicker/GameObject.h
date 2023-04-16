@@ -12,7 +12,8 @@ protected:
 public:
 	GameObject(const char* imagePath, Window* window);
 	GameObject(const char* imagePath, Window* window, int x, int y, int width, int height);
-	virtual void update(SDL_Event& event){}
+	virtual void handleInput(SDL_Event& event){}
+	virtual void update() {}
 	void render(Window* window);
 };
 

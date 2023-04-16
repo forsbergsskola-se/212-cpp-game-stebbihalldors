@@ -13,20 +13,13 @@ and may not be redistributed without written permission.*/
 #include "SDL_ImageImageLoader.h"
 #include <vector>
 #include "GameObject.h"
-#include "Charmander.h"
+#include "Cookie.h"
 #include "CookieProducer.h"
+#include "UpgradeProducer.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 768;
-
-const std::map<SDL_KeyCode, const char*> surfaceMap = {
-	{SDL_KeyCode::SDLK_UP, "img/up.bmp"},
-	{SDL_KeyCode::SDLK_DOWN, "img/down.bmp"},
-	{SDL_KeyCode::SDLK_LEFT, "img/left.bmp"},
-	{SDL_KeyCode::SDLK_RIGHT, "img/right.bmp"}
-};
-const char* fallbackSurface{ "img/Pikachu.png" };
 
 const unsigned int FPS = 30;
 const unsigned int MS_PER_FRAME = 1000 / FPS;
@@ -54,13 +47,18 @@ int main(int argc, char* args[])
 	gameObjects.push_back(new GameObject{ "img/Background.jpg", &window , 0,0,1024, 768 }); // Image without a button (not clickable)
 	gameObjects.push_back(new GameObject{ "img/VLine.png", &window, (SCREEN_WIDTH/2)+(SCREEN_WIDTH/6), -200, 200, 1500 }); // Image without a button (not clickable)
 	//Button images
-	gameObjects.push_back(new Charmander{ &window, 0, (SCREEN_HEIGHT/2)-gHeight/2 , gWidth, gHeight});
-	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 50 });
+	// gameObject.push_back(new CookieUI(cookie));
+	// CookieUI(Cookie* cookie) cookie->addListener(this);
+	// CookieUI : ICookieListener
+	// CookieUI override onCookieChanged(int newCookies){text.setText(newCookies)};
+	Cookie cookie{ &window, 0, (SCREEN_HEIGHT / 2) - gHeight / 2 , gWidth, gHeight };
+	gameObjects.push_back(&cookie);
+	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , cookie});
+	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 110, 150, 50, 50});
 
 	// while the user doesnt want to quit
 	SDL_Event e; bool quit = false;
 	unsigned int frameStartMs;
-	bool goingRight = true;
 
 	while (quit == false)
 	{
@@ -75,16 +73,13 @@ int main(int argc, char* args[])
 				case SDL_QUIT: {
 					quit = true;
 				} 	 break;
-				case SDL_KEYDOWN: {
-					const char* imgPath = fallbackSurface;
-					if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end()) {
-						imgPath = result->second;
-					}
-				} break;
 			}
 			for (auto gameObject : gameObjects) {
-				gameObject->update(e);
+				gameObject->handleInput(e);
 			}
+		}
+		for (auto gameObject : gameObjects) {
+			gameObject->update();
 		}
 
 		// when done with all pending events, update the rendered screen

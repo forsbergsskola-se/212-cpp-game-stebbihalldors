@@ -6,6 +6,7 @@ class CookieProducer :
     public Button
 {
     int i{};
+    int upgradeProducer{ 1 };
     int totalProducers{1};
     int producerCost{5};
     int totalCookies{};
@@ -25,5 +26,6 @@ public:
     };
     void getCookies(const Charmander* charmander);
     void update(SDL_Event& event) override;
+    void makeCookies();
 };
 

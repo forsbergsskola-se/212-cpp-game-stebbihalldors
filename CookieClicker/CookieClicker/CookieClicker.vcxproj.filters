@@ -33,7 +33,7 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Charmander.cpp">
+    <ClCompile Include="Cookie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
@@ -65,7 +65,7 @@
     <ClInclude Include="GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Charmander.h">
+    <ClInclude Include="Cookie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IImageLoader.h">

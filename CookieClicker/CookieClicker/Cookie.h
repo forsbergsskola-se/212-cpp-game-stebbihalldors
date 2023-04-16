@@ -19,6 +19,7 @@ public:
         image->width = width;
         image->height = height;
     };
-    void update(SDL_Event& event) override;
+    void handleInput(SDL_Event& event) override;
+    void update() {}
 };
-
+ 

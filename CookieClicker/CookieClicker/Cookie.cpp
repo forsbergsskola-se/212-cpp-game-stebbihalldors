@@ -1,9 +1,9 @@
-#include "Charmander.h"
+#include "Cookie.h"
 #include <iostream>
 
-void Cookie::update(SDL_Event& event)
+void Cookie::handleInput(SDL_Event& event)
 {
-	Button::update(event);
+	Button::handleInput(event);
 	/*
 	if (patrollingDown)
 	{

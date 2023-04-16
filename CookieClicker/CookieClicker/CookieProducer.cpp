@@ -1,13 +1,15 @@
 #include "CookieProducer.h"
 #include <iostream>
+#include "Cookie.h"
 
-void CookieProducer::update(SDL_Event& event)
+void CookieProducer::handleInput(SDL_Event& event)
 {
-	Button::update(event);
-
+	Button::handleInput(event);
+	int totalCookies{}; //needs to get the cookiePointer to the totalCookie
 	i++;
-	if (i == 5) {
-		totalCookies += totalProducers * 1; //number of cookies produces times producers at fixed time(adding upgrades on producers)
+	if (i == 20) {
+		cookie->totalCookies += totalProducers * upgradeProducer;
+		totalCookies += totalProducers * upgradeProducer; //number of cookies produces times producers at fixed time(adding upgrades on producers)
 		i = 0;
 	}
 	//SDL_Delay(5);
@@ -15,11 +17,12 @@ void CookieProducer::update(SDL_Event& event)
 }
 
 void CookieProducer::onClick() {
-	printf("CookieProducer++\n");
-	printf("%d", totalCookies);
-}
+	if (producerCost > cookie->totalCookies) return;
 
-void CookieProducer::getCookies(const Charmander* charmander)
-{
-	totalCookies = charmander->totalCookies;
+	totalProducers++;
+	cookie->totalCookies -= producerCost;
+	producerCost *= 2;
+
+	printf("CookieProducer++\n");
+	printf("%d\n", cookie->totalCookies);
 }

@@ -173,7 +173,7 @@ copy /Y "$(SolutionDir)ext\SDL2_ttf-2.20.2\lib\x64\SDL2_ttf.dll" "$(TargetDir)SD
   <ItemGroup>
     <ClCompile Include="01_hello_SDL.cpp" />
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Charmander.cpp" />
+    <ClCompile Include="Cookie.cpp" />
     <ClCompile Include="CookieProducer.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="IImageLoader.cpp" />
@@ -185,7 +185,7 @@ copy /Y "$(SolutionDir)ext\SDL2_ttf-2.20.2\lib\x64\SDL2_ttf.dll" "$(TargetDir)SD
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
-    <ClInclude Include="Charmander.h" />
+    <ClInclude Include="Cookie.h" />
     <ClInclude Include="CookieProducer.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="IImageLoader.h" />

@@ -1,7 +1,7 @@
 #include "Button.h"
 #include <iostream>
 
-void Button::update(SDL_Event& event)
+void Button::handleInput(SDL_Event& event)
 {
 		switch (event.type)
 		{

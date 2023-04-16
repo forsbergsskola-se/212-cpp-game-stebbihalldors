@@ -4,11 +4,11 @@
 class Charmander :
     public Button
 {
-    int totalCookies{};
     bool patrollingDown{ true };
 protected:
     void onClick() override;
 public:
+    int totalCookies{};
     Charmander(Window* window) : Button("img/Charmander.png", window) {};
     Charmander(Window* window, int x) : Button("img/Charmander.png", window) {
         image->x = x;

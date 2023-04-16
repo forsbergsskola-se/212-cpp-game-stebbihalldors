@@ -62,4 +62,5 @@ void Window::clear() {
 void Window::present() {
 	//Update the surface
 	SDL_RenderPresent(renderer);
+	SDL_SetWindowTitle(window, "Cookies: "); // USE THIS FOR TOTAL COOKIES? if ttf doesnt happen
 }

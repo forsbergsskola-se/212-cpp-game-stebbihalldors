@@ -28,4 +28,5 @@ void Charmander::onClick() {
 	printf("Charmander was clicked. ");
 	totalCookies += 1;
 	std::cout << totalCookies << std::endl;
+	//SDL_SetWindowTitle(window, "Cookies: "); // USE THIS FOR TOTAL COOKIES? if ttf doesnt happen
 }

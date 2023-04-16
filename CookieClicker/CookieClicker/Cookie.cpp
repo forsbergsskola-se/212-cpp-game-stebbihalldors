@@ -1,7 +1,7 @@
 #include "Charmander.h"
 #include <iostream>
 
-void Charmander::update(SDL_Event& event)
+void Cookie::update(SDL_Event& event)
 {
 	Button::update(event);
 	/*
@@ -24,7 +24,7 @@ void Charmander::update(SDL_Event& event)
 	*/
 }
 
-void Charmander::onClick() {
+void Cookie::onClick() {
 	printf("Charmander was clicked. ");
 	totalCookies += 1;
 	std::cout << totalCookies << std::endl;

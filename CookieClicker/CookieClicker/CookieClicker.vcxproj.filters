@@ -57,6 +57,9 @@
     <ClCompile Include="CookieProducer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UpgradeProducer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CookieProducer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeProducer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

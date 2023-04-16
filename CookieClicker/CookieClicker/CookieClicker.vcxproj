@@ -180,6 +180,7 @@ copy /Y "$(SolutionDir)ext\SDL2_ttf-2.20.2\lib\x64\SDL2_ttf.dll" "$(TargetDir)SD
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="SDLImageLoader.cpp" />
     <ClCompile Include="SDL_ImageImageLoader.cpp" />
+    <ClCompile Include="UpgradeProducer.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +192,7 @@ copy /Y "$(SolutionDir)ext\SDL2_ttf-2.20.2\lib\x64\SDL2_ttf.dll" "$(TargetDir)SD
     <ClInclude Include="Image.h" />
     <ClInclude Include="SDLImageLoader.h" />
     <ClInclude Include="SDL_ImageImageLoader.h" />
+    <ClInclude Include="UpgradeProducer.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

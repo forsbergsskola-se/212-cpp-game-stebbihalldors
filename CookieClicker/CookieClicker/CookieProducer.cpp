@@ -5,15 +5,20 @@
 void CookieProducer::handleInput(SDL_Event& event)
 {
 	Button::handleInput(event);
-	int totalCookies{}; //needs to get the cookiePointer to the totalCookie
+}
+
+void CookieProducer::update()
+{
+	 //needs to get the cookiePointer to the totalCookie
 	i++;
-	if (i == 20) {
+	if (i == 100) {
 		cookie->totalCookies += totalProducers * upgradeProducer;
-		totalCookies += totalProducers * upgradeProducer; //number of cookies produces times producers at fixed time(adding upgrades on producers)
+		//cookie->totalCookies += totalProducers * upgradeProducer; //number of cookies produces times producers at fixed time(adding upgrades on producers)
 		i = 0;
+		std::cout << "Produces Cookies: " << cookie->totalCookies << std::endl;
 	}
 	//SDL_Delay(5);
-	std::cout << "Produces Cookies: " << totalCookies << std::endl;
+	
 }
 
 void CookieProducer::onClick() {

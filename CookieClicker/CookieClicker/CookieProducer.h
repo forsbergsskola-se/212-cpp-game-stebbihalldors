@@ -21,7 +21,7 @@ public:
         image->height = height;
     };
     void handleInput(SDL_Event& event) override;
-    void update() {}
+    void update() override;
 
 };
 

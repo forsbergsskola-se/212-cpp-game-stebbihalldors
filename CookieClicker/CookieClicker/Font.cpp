@@ -5,7 +5,7 @@
 
 Font::Font(const char* path, const int size) 
 {
-	font = TTF_OpenFont("16_true_type_fonts/lazy.ttf", 28);
+	font = TTF_OpenFont(path, size);
 	if (font == nullptr)
 	{
 		printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());

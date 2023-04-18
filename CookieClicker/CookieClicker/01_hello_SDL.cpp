@@ -16,6 +16,7 @@ and may not be redistributed without written permission.*/
 #include "Cookie.h"
 #include "CookieProducer.h"
 #include "UpgradeProducer.h"
+#include "Font.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1024;
@@ -29,6 +30,12 @@ int main(int argc, char* args[])
 {
 	// We decide for now to use the SDL Image Loader ( which only supports BMP)
 	IImageLoader* imageLoader = new SDL_ImageImageLoader{};
+	//Needs IFontLoader to make this cleaner.
+	if (TTF_Init() == -1)
+	{
+		printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
+	}
+	
 	// We pass that ImageLoader on to the Window, so the Window can use it
 	// to load images
 	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT,imageLoader };
@@ -55,6 +62,9 @@ int main(int argc, char* args[])
 	gameObjects.push_back(&cookie);
 	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , &cookie});
 	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 110, 150, 50, 50});
+
+	Font font{ "font/lazy.ttf", 28 };
+	auto text = font.createText("testing", window.getRenderer());
 
 	// while the user doesnt want to quit
 	SDL_Event e; bool quit = false;
@@ -89,6 +99,8 @@ int main(int argc, char* args[])
 		for (auto gameObject : gameObjects) {
 			gameObject->render(&window);
 		}
+		window.render(text.get());
+
 		window.present(); // then present it
 
 		// see, how long we should wait so we get 30fps

@@ -26,5 +26,6 @@ public:
 	std::unique_ptr<Image> loadImage(const char* path);
 
 	SDL_Window* getWindow();
+	SDL_Renderer* getRenderer();
 };
 

@@ -69,3 +69,8 @@ SDL_Window* Window::getWindow()
 {
 	return window;
 }
+
+SDL_Renderer* Window::getRenderer()
+{
+	return renderer;
+}

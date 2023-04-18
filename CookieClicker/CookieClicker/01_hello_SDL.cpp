@@ -8,10 +8,10 @@ and may not be redistributed without written permission.*/
 #include <map>
 #include <memory>
 #include <string>
+#include <vector>
 #include "Window.h"
 #include "Image.h"
 #include "SDL_ImageImageLoader.h"
-#include <vector>
 #include "GameObject.h"
 #include "Cookie.h"
 #include "CookieProducer.h"
@@ -67,11 +67,9 @@ int main(int argc, char* args[])
 		// loop through all pending events from Windows(OS)
 		while (SDL_PollEvent(&e))
 		{
-			//char* title2 = malloc(strlen(mainTitle) + 20);
-			char* title[10];
-			sprintf(title, "%s | %d FPS", mainTitle, cookie.totalCookies);
-			SDL_SetWindowTitle(window.getWindow(), s*); // USE THIS FOR TOTAL COOKIES? if ttf doesnt happen
+			//SDL_SetWindowTitle(window.getWindow(), cookie.totalCookies ); // needs to convert int to char* 
 			// check, if its an event we want to react to
+
 			switch (e.type)
 			{
 				case SDL_QUIT: {

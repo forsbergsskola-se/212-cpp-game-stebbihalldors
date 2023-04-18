@@ -4,12 +4,11 @@
 class Cookie :
     public Button
 {
-    bool patrollingDown{ true };
 protected:
     void onClick() override;
 public:
     int totalCookies{};
-    Cookie(Window* window) : Button("img/Cookie.png", window) {};
+    Cookie(Window* window) : Button("img/Cookie.png", window) {} ;
     Cookie(Window* window, int x) : Button("img/Cookie.png", window) {
         image->x = x;
     };

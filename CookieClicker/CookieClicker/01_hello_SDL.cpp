@@ -67,6 +67,10 @@ int main(int argc, char* args[])
 		// loop through all pending events from Windows(OS)
 		while (SDL_PollEvent(&e))
 		{
+			//char* title2 = malloc(strlen(mainTitle) + 20);
+			char* title[10];
+			sprintf(title, "%s | %d FPS", mainTitle, cookie.totalCookies);
+			SDL_SetWindowTitle(window.getWindow(), s*); // USE THIS FOR TOTAL COOKIES? if ttf doesnt happen
 			// check, if its an event we want to react to
 			switch (e.type)
 			{

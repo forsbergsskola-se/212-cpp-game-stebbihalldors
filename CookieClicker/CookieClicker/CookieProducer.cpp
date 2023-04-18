@@ -9,7 +9,6 @@ void CookieProducer::handleInput(SDL_Event& event)
 
 void CookieProducer::update()
 {
-	 //needs to get the cookiePointer to the totalCookie
 	i++;
 	if (i == 100) {
 		cookie->totalCookies += totalProducers * upgradeProducer;
@@ -23,11 +22,11 @@ void CookieProducer::update()
 
 void CookieProducer::onClick() {
 	if (producerCost > cookie->totalCookies) return;
-
+	//something weird happening when buying the producer i instantly get the producerCookies( so I have 10cookies - upgrade(cost 10) i get 0+2
+	printf("CookieProducer Cost: %d\n", producerCost);
 	totalProducers++;
 	cookie->totalCookies -= producerCost;
 	producerCost *= 2;
 
-	printf("CookieProducer++\n");
-	printf("%d\n", cookie->totalCookies);
+	printf("CookieProducers: %d\n", totalProducers);
 }

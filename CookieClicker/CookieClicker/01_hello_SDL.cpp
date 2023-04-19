@@ -63,8 +63,9 @@ int main(int argc, char* args[])
 	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , &cookie});
 	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 110, 150, 50, 50});
 
-	Font font{ "font/lazy.ttf", 28, 100, 100, 1000, 1000 };
-	auto text = font.createText("testing", window.getRenderer());
+	Font font{ "font/lazy.ttf", 28, 20, 20, 100,40 };
+	
+	
 
 	// while the user doesnt want to quit
 	SDL_Event e; bool quit = false;
@@ -74,12 +75,18 @@ int main(int argc, char* args[])
 	{
 		frameStartMs = SDL_GetTicks();
 
+		//Prints out totalCookies TODO: move to UI Class
+		std::string s = "Cookies: ";
+		s += std::to_string(cookie.totalCookies);
+		
+		auto text = font.createText(s.c_str(), window.getRenderer());
+		//Prints totalCookies in Title
+		SDL_SetWindowTitle(window.getWindow(), s.c_str()); // needs to convert int to char* 
+
 		// loop through all pending events from Windows(OS)
 		while (SDL_PollEvent(&e))
 		{
-			//SDL_SetWindowTitle(window.getWindow(), cookie.totalCookies ); // needs to convert int to char* 
 			// check, if its an event we want to react to
-
 			switch (e.type)
 			{
 				case SDL_QUIT: {

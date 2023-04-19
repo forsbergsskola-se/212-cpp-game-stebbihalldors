@@ -19,8 +19,8 @@ and may not be redistributed without written permission.*/
 #include "Font.h"
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 1024;
-const int SCREEN_HEIGHT = 768;
+const int SCREEN_WIDTH = 1900;
+const int SCREEN_HEIGHT = 1000;
 
 const unsigned int FPS = 30;
 const unsigned int MS_PER_FRAME = 1000 / FPS;
@@ -51,18 +51,23 @@ int main(int argc, char* args[])
 	int gHeight = 200;
 	int gWidth = 200;
 	//Normal images
-	gameObjects.push_back(new GameObject{ "img/Background.jpg", &window , 0,0,1024, 768 }); // Image without a button (not clickable)
+	gameObjects.push_back(new GameObject{ "img/Background.jpg", &window , 0,0,1900, 1000 }); // Image without a button (not clickable)
 	gameObjects.push_back(new GameObject{ "img/VLine.png", &window, (SCREEN_WIDTH/2)+(SCREEN_WIDTH/6), -200, 200, 1500 }); // Image without a button (not clickable)
 	//Button images
 	Cookie cookie{ &window, 0, (SCREEN_HEIGHT / 2) - gHeight / 2 , gWidth, gHeight };
 	gameObjects.push_back(&cookie);
 	CookieProducer cP{ &window, SCREEN_WIDTH - 210, 10, 200, 100 , &cookie };
 	gameObjects.push_back(&cP);
-	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 120, 120, 80, 80, &cP, &cookie});
+	UpgradeProducer uP{ &window, SCREEN_WIDTH - 120, 120, 80, 80, &cP, &cookie };
+	gameObjects.push_back(&uP);
 
 	Font totalCookieFont{ "font/Pacifico.ttf", 60, 20, 20, 300,90 }; //totalCookie
-	Font totalProducersFont{ "font/Pacifico.ttf", 50, SCREEN_WIDTH - 450,10,200,100 }; //totalProducers
-	Font producerLvl{ "font/Pacifico.ttf", 30, SCREEN_WIDTH - 200,120,80,80 }; //totalProducers
+	Font totalProducersFont{ "font/Pacifico.ttf", 50, 20, 100,200,100 }; //totalProducers
+	Font producerCost{ "font/Pacifico.ttf", 50, SCREEN_WIDTH - 300, 20, 80, 80 }; //producerCost
+	Font producerLvl{ "font/Pacifico.ttf", 30, SCREEN_WIDTH - 120, 180, 80, 80 }; //producerLvl
+	Font producerLvlCost{ "font/Pacifico.ttf", 30, SCREEN_WIDTH - 220, 120, 80, 80 }; //producerLvlCost
+	
+
 	// gameObject.push_back(new CookieUI(cookie));
 	// CookieUI(Cookie* cookie) cookie->addListener(this);
 	// CookieUI : ICookieListener
@@ -78,11 +83,15 @@ int main(int argc, char* args[])
 	{
 		frameStartMs = SDL_GetTicks();
 
+		//TTF img todo: move to a UI (i know this is sh*t)
+		std::string q = "Cost: " + std::to_string(uP.getUpgradeCost());
+		auto text5 = producerLvlCost.createText(q.c_str(), window.getRenderer());
+		std::string r = "Cost: " + std::to_string(cP.getProducerCost());
+		auto text4 = producerCost.createText(r.c_str(), window.getRenderer());
 		std::string a = "Lvl: " + std::to_string(cP.upgradeProducer);
 		auto text3 = producerLvl.createText(a.c_str(), window.getRenderer());
 		std::string t = "Producers: " + std::to_string(cP.getTotalProducers());
 		auto text2 = totalProducersFont.createText(t.c_str(), window.getRenderer());
-		//Prints out totalCookies TODO: move to UI Class
 		std::string s = "Cookies: " + std::to_string(cookie.totalCookies);
 		auto text = totalCookieFont.createText(s.c_str(), window.getRenderer());
 		//Prints totalCookies in Title
@@ -114,6 +123,8 @@ int main(int argc, char* args[])
 		window.render(text.get());
 		window.render(text2.get());
 		window.render(text3.get());
+		window.render(text4.get());
+		window.render(text5.get());
 
 		window.present(); // then present it
 

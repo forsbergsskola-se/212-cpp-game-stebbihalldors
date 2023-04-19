@@ -198,14 +198,26 @@ copy /Y "$(SolutionDir)ext\SDL2_ttf-2.20.2\lib\x64\SDL2_ttf.dll" "$(TargetDir)SD
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="img\Background.jpg" />
+    <Image Include="img\Charmander.png" />
+    <Image Include="img\Cookie.png" />
+    <Image Include="img\CookieProducer.png" />
     <Image Include="img\down.bmp" />
     <Image Include="img\hello_world.bmp" />
     <Image Include="img\left.bmp" />
     <Image Include="img\loaded.png" />
+    <Image Include="img\Pikachu.png" />
     <Image Include="img\press.bmp" />
     <Image Include="img\right.bmp" />
     <Image Include="img\texture.png" />
+    <Image Include="img\tinyProducer.png" />
     <Image Include="img\up.bmp" />
+    <Image Include="img\UpgradeProducer.png" />
+    <Image Include="img\VLine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="font\lazy.ttf" />
+    <Font Include="font\Pacifico.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

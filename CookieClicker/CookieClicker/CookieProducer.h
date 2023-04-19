@@ -23,6 +23,8 @@ public:
     void handleInput(SDL_Event& event) override;
     void update() override;
     int getTotalProducers();
+    int getProducerCost();
+
 
 };
 

@@ -35,3 +35,8 @@ int CookieProducer::getTotalProducers()
 {
 	return totalProducers;
 }
+
+int CookieProducer::getProducerCost()
+{
+	return producerCost;
+}

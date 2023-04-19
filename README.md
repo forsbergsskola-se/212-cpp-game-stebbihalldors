@@ -11,5 +11,7 @@ Make a simple c++ game in SDL Framework.
 
 ![image](https://user-images.githubusercontent.com/9976716/233194747-b37e4211-a4ee-4aba-922a-faf32f087309.png)
 
-<video src='https://vimeo.com/819274543' width=180/>
+<video src="https://user-images.githubusercontent.com/9976716/233199885-834d7802-8c5d-47b2-90a1-e4a076be33fb.mp4"></video>
+
+
 

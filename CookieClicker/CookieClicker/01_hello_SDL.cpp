@@ -56,13 +56,13 @@ int main(int argc, char* args[])
 	//Button images
 	Cookie cookie{ &window, 0, (SCREEN_HEIGHT / 2) - gHeight / 2 , gWidth, gHeight };
 	gameObjects.push_back(&cookie);
-	//gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , &cookie});
 	CookieProducer cP{ &window, SCREEN_WIDTH - 210, 10, 200, 100 , &cookie };
 	gameObjects.push_back(&cP);
-	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 140, 120, 80, 80, &cP, &cookie});
+	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 120, 120, 80, 80, &cP, &cookie});
 
 	Font totalCookieFont{ "font/Pacifico.ttf", 60, 20, 20, 300,90 }; //totalCookie
 	Font totalProducersFont{ "font/Pacifico.ttf", 50, SCREEN_WIDTH - 450,10,200,100 }; //totalProducers
+	Font producerLvl{ "font/Pacifico.ttf", 30, SCREEN_WIDTH - 200,120,80,80 }; //totalProducers
 	// gameObject.push_back(new CookieUI(cookie));
 	// CookieUI(Cookie* cookie) cookie->addListener(this);
 	// CookieUI : ICookieListener
@@ -78,12 +78,12 @@ int main(int argc, char* args[])
 	{
 		frameStartMs = SDL_GetTicks();
 
+		std::string a = "Lvl: " + std::to_string(cP.upgradeProducer);
+		auto text3 = producerLvl.createText(a.c_str(), window.getRenderer());
 		std::string t = "Producers: " + std::to_string(cP.getTotalProducers());
 		auto text2 = totalProducersFont.createText(t.c_str(), window.getRenderer());
 		//Prints out totalCookies TODO: move to UI Class
-		std::string s = "Cookies: ";
-		s += std::to_string(cookie.totalCookies);
-		
+		std::string s = "Cookies: " + std::to_string(cookie.totalCookies);
 		auto text = totalCookieFont.createText(s.c_str(), window.getRenderer());
 		//Prints totalCookies in Title
 		SDL_SetWindowTitle(window.getWindow(), s.c_str()); // needs to convert int to char* 
@@ -113,6 +113,7 @@ int main(int argc, char* args[])
 		}
 		window.render(text.get());
 		window.render(text2.get());
+		window.render(text3.get());
 
 		window.present(); // then present it
 

@@ -7,13 +7,13 @@ class CookieProducer :
     public Button
 {
     int i{};
-    int upgradeProducer{ 1 };
-    int totalProducers{1};
+    int totalProducers{};
     int producerCost{5};
     Cookie* cookie;
 protected:
     void onClick() override;
 public:
+    int upgradeProducer{ 1 };
     CookieProducer(Window* window, int x, int y, int width, int height, Cookie* cookie) : Button("img/CookieProducer.png", window), cookie{ cookie } {
         image->x = x;
         image->y = y;

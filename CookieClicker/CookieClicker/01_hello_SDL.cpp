@@ -56,8 +56,10 @@ int main(int argc, char* args[])
 	//Button images
 	Cookie cookie{ &window, 0, (SCREEN_HEIGHT / 2) - gHeight / 2 , gWidth, gHeight };
 	gameObjects.push_back(&cookie);
-	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , &cookie});
-	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 140, 120, 80, 80});
+	//gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , &cookie});
+	CookieProducer cP{ &window, SCREEN_WIDTH - 210, 10, 200, 100 , &cookie };
+	gameObjects.push_back(&cP);
+	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 140, 120, 80, 80, &cP, &cookie});
 
 	Font font{ "font/Pacifico.ttf", 60, 20, 20, 300,90 };
 	// gameObject.push_back(new CookieUI(cookie));

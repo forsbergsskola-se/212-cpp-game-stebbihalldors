@@ -22,7 +22,7 @@ void CookieProducer::update()
 
 void CookieProducer::onClick() {
 	if (producerCost > cookie->totalCookies) return;
-	//something weird happening when buying the producer i instantly get the producerCookies( so I have 10cookies - upgrade(cost 10) i get 0+2
+
 	printf("CookieProducer Cost: %d\n", producerCost);
 	totalProducers++;
 	cookie->totalCookies -= producerCost;

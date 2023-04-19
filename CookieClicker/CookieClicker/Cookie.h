@@ -20,5 +20,7 @@ public:
     };
     void handleInput(SDL_Event& event) override;
     void update() {}
+    
+    //int getCookies(); setCookies() or public 
 };
  

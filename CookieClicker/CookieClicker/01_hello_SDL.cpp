@@ -61,7 +61,8 @@ int main(int argc, char* args[])
 	gameObjects.push_back(&cP);
 	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 140, 120, 80, 80, &cP, &cookie});
 
-	Font font{ "font/Pacifico.ttf", 60, 20, 20, 300,90 };
+	Font totalCookieFont{ "font/Pacifico.ttf", 60, 20, 20, 300,90 }; //totalCookie
+	Font totalProducersFont{ "font/Pacifico.ttf", 50, SCREEN_WIDTH - 450,10,200,100 }; //totalProducers
 	// gameObject.push_back(new CookieUI(cookie));
 	// CookieUI(Cookie* cookie) cookie->addListener(this);
 	// CookieUI : ICookieListener
@@ -77,11 +78,13 @@ int main(int argc, char* args[])
 	{
 		frameStartMs = SDL_GetTicks();
 
+		std::string t = "Producers: " + std::to_string(cP.getTotalProducers());
+		auto text2 = totalProducersFont.createText(t.c_str(), window.getRenderer());
 		//Prints out totalCookies TODO: move to UI Class
 		std::string s = "Cookies: ";
 		s += std::to_string(cookie.totalCookies);
 		
-		auto text = font.createText(s.c_str(), window.getRenderer());
+		auto text = totalCookieFont.createText(s.c_str(), window.getRenderer());
 		//Prints totalCookies in Title
 		SDL_SetWindowTitle(window.getWindow(), s.c_str()); // needs to convert int to char* 
 
@@ -109,6 +112,7 @@ int main(int argc, char* args[])
 			gameObject->render(&window);
 		}
 		window.render(text.get());
+		window.render(text2.get());
 
 		window.present(); // then present it
 
@@ -120,6 +124,9 @@ int main(int argc, char* args[])
 			SDL_Delay(MS_PER_FRAME - frameTimeMs);
 		}
 	}
+
+	//need to delete the gameObject dynamic ones or unique_ptr them
+
 	return 0;
 }
 

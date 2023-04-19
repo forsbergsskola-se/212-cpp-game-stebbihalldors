@@ -30,3 +30,8 @@ void CookieProducer::onClick() {
 
 	printf("CookieProducers: %d\n", totalProducers);
 }
+
+int CookieProducer::getTotalProducers()
+{
+	return totalProducers;
+}

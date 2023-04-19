@@ -5,12 +5,15 @@ extern class Image;
 
 class Font
 {
+	int x, y, width, height;
+	const char* path;
+	int size;
 	//The image we will load and show on screen
 	TTF_Font* font{};
 	bool success;
 public:
-	int x, y, width, height;
-	Font(const char* path, const int size);
+	
+	Font(const char* path, const int size, int x, int y, int width, int height);
 	~Font();
 	bool wasSuccessful() { return success; }
 	TTF_Font* getResource() { return font; }

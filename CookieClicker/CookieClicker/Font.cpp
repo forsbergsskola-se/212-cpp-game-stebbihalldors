@@ -3,7 +3,8 @@
 #include <SDL_ttf.h>
 #include "Image.h"
 
-Font::Font(const char* path, const int size) 
+Font::Font(const char* path, const int size, int x, int y, int width, int height)
+    : x{ x }, y{ y }, width{ width }, height{ height }
 {
 	font = TTF_OpenFont(path, size);
 	if (font == nullptr)
@@ -25,7 +26,8 @@ Font::~Font() {
 
 std::unique_ptr<Image> Font::createText(const char* text, SDL_Renderer* renderer)
 {
-    SDL_Color textColor = { 0,0,0 };
+    SDL_Color textColor = { 255,0,0 };
+    
     //Render text surface
     SDL_Surface* textSurface = TTF_RenderText_Solid(font, text, textColor);
     if (textSurface == nullptr)
@@ -43,9 +45,9 @@ std::unique_ptr<Image> Font::createText(const char* text, SDL_Renderer* renderer
         else
         {
             //Get image dimensions
-            auto width = textSurface->w;
-            auto height = textSurface->h;
             auto image = std::make_unique<Image>(mTexture);
+            image->x = x;
+            image->y = y;
             image->width = width;
             image->height = height;
             return std::move(image);

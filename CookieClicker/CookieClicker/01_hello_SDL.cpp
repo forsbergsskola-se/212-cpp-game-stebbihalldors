@@ -63,7 +63,7 @@ int main(int argc, char* args[])
 	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , &cookie});
 	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 110, 150, 50, 50});
 
-	Font font{ "font/lazy.ttf", 28 };
+	Font font{ "font/lazy.ttf", 28, 100, 100, 1000, 1000 };
 	auto text = font.createText("testing", window.getRenderer());
 
 	// while the user doesnt want to quit

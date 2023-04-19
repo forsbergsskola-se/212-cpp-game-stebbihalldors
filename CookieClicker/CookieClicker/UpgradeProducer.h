@@ -7,10 +7,6 @@ class UpgradeProducer :
 protected:
     void onClick() override;
 public:
-    UpgradeProducer(Window* window) : Button("img/UpgradeProducer.png", window) {};
-    UpgradeProducer(Window* window, int x) : Button("img/UpgradeProducer.png", window) {
-        image->x = x;
-    };
     UpgradeProducer(Window* window, int x, int y, int width, int height) : Button("img/UpgradeProducer.png", window) {
         image->x = x;
         image->y = y;

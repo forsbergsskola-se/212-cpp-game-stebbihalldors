@@ -54,16 +54,16 @@ int main(int argc, char* args[])
 	gameObjects.push_back(new GameObject{ "img/Background.jpg", &window , 0,0,1024, 768 }); // Image without a button (not clickable)
 	gameObjects.push_back(new GameObject{ "img/VLine.png", &window, (SCREEN_WIDTH/2)+(SCREEN_WIDTH/6), -200, 200, 1500 }); // Image without a button (not clickable)
 	//Button images
+	Cookie cookie{ &window, 0, (SCREEN_HEIGHT / 2) - gHeight / 2 , gWidth, gHeight };
+	gameObjects.push_back(&cookie);
+	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , &cookie});
+	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 140, 120, 80, 80});
+
+	Font font{ "font/Pacifico.ttf", 60, 20, 20, 300,90 };
 	// gameObject.push_back(new CookieUI(cookie));
 	// CookieUI(Cookie* cookie) cookie->addListener(this);
 	// CookieUI : ICookieListener
 	// CookieUI override onCookieChanged(int newCookies){text.setText(newCookies)};
-	Cookie cookie{ &window, 0, (SCREEN_HEIGHT / 2) - gHeight / 2 , gWidth, gHeight };
-	gameObjects.push_back(&cookie);
-	gameObjects.push_back(new CookieProducer{ &window, SCREEN_WIDTH-210, 10, 200, 100 , &cookie});
-	gameObjects.push_back(new UpgradeProducer{ &window, SCREEN_WIDTH - 110, 150, 50, 50});
-
-	Font font{ "font/lazy.ttf", 28, 20, 20, 100,40 };
 	
 	
 

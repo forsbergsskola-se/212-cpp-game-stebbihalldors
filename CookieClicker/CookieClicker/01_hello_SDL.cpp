@@ -83,7 +83,7 @@ int main(int argc, char* args[])
 	{
 		frameStartMs = SDL_GetTicks();
 
-		//TTF img todo: move to a UI (i know this is sh*t)
+		//TTF img(font) todo: move to a UI (i know this is sh*t but better for the video/ss)
 		std::string q = "Cost: " + std::to_string(uP.getUpgradeCost());
 		auto text5 = producerLvlCost.createText(q.c_str(), window.getRenderer());
 		std::string r = "Cost: " + std::to_string(cP.getProducerCost());

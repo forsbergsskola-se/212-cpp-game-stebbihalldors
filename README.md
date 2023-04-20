@@ -21,14 +21,14 @@ Using Observer Pattern(soon) <br>
 -Inhertence, polymorphism, unique_ptrs, vectors <br>
 
 **Take aways** <br>
-Learned alot from this assignment with SDl and c++, how to use Design Patterns and Split up responsibilities in classes. <br>
+Learned alot from this assignment with SDL and c++, how to use Design Patterns and Split up responsibilities in classes. <br>
 Still needs alot more work to refactor and fix few things like: <br>
 -Need to add more unique_ptr or delete manually where dynamically alloceded (memory leak atm) <br>
 -Split up the TTF Font into its seperate class instead of handle it in main. <br>
 -Setup the Observer Pattern <br>
 -Add +1 font image when clicking the cookie on mouse pointer <br>
--Add Image of CookieProducer and when it produces show as above <br>
--Make use of advanced C++ Features such as <vr>
+-Add Image of CookieProducer and when it produces(same as above) <br>
+-Make use of advanced C++ Features such as <br>
 -runtime polymorphism <br>
 -compile-time polymorphism <br>
 -concepts <br>
